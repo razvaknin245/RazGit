@@ -1,0 +1,3 @@
+used previous code of authentication of pam
+used sudo find /var/ -type f -mmin (minutes you want)
+see that the logs is in /var/log/auth.log

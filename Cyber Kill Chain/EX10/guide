@@ -1,0 +1,72 @@
+install bind9:
+
+sudo apt install bind9 bind9utils bind9-doc
+
+configure /etc/default/named - to work with IPv4
+OPTIONS="-u bind -4"
+
+configure the primary dns server at /etc/bind/named.conf.options:
+
+zone "name.sub" 
+{
+    type primary;
+    file "/etc/bind/zones/db.name.sub"; # zone file path
+    allow-transfer {machine-ip; };
+};
+zone "192.168.in-addr.arpa" {
+    type primary;
+    file "/etc/bind/zones/db.192.168";  
+    allow-transfer { machine-ip; };
+};
+
+creatine zone file
+
+sudo mkdir /etc/bind/zones
+sudo cp /etc/bind/db.local /etc/bind/zones/db.name.sub
+sudo nano /etc/bind/zones/db.name.sub
+
+$TTL    604800
+@       IN      SOA     ns.name.sub. admin.ns.name.sub (
+                  3     ; Serial
+             604800     ; Refresh
+              86400     ; Retry
+            2419200     ; Expire
+             604800 )   ; Negative Cache TTL
+;
+; name servers - NS records
+     IN      NS      ns1.nyc3.example.com.
+     IN      NS      ns2.nyc3.example.com.
+
+; name servers - A records
+ns.name.sub.          IN      A       192.168.7.12
+
+; 10.128.0.0/16 - A records
+ns.name.sub.          	       IN      A       192.168.7.12
+admin.ns.name.sub.             IN      A       192.168.7.12
+
+
+
+sudo cp /etc/bind/db.127 /etc/bind/zones/db.192.168
+sudo nano /etc/bind/zones/db.192.168
+
+$TTL    604800
+@       IN      SOA     ns.name.sub. admin.ns.name.sub. (
+                              3         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+; name servers
+      IN      NS      ns.name.sub.
+      IN      NS      admin.ns.name.sub.
+
+
+sudo named-checkconf
+sudo named-checkzone name.sub /etc/bind/zones/db.name.sub
+sudo named-checkzone 192.168.in-addr.arpa /etc/bind/zones/db.192.168
+sudo systemctl restart bind9
+sudo ufw allow Bind9
+
+
+and do dig @nameip
+

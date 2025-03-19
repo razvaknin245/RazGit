@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Page</title>
+    <script>
+      function login() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        if (username === "daniel" && password === "password123") {
+          document.getElementById("output").innerHTML = "daniel the 0";
+        } else {
+          document.getElementById("output").innerHTML = "Invalid username or password";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Login Page</h1>
+    <form>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username"><br><br>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password"><br><br>
+
+      <input type="button" value="Login" onclick="login()">
+    </form>
+
+    <p id="output"></p>
+  </body>
+</html>

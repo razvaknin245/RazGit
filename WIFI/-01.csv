@@ -1,0 +1,7 @@
+
+BSSID, First time seen, Last time seen, channel, Speed, Privacy, Cipher, Authentication, Power, # beacons, # IV, LAN IP, ID-length, ESSID, Key
+E8:1C:BA:F3:DF:F2, 2023-06-04 11:33:25, 2023-06-04 11:36:41,  1, 360, WPA2, CCMP, PSK, -64,     1555,     2291,   0.  0.  0.  0,  13, Infinity_Labs, 
+
+Station MAC, First time seen, Last time seen, Power, # packets, BSSID, Probed ESSIDs
+D2:64:56:42:BF:8C, 2023-06-04 11:33:25, 2023-06-04 11:33:34, -70,      208, E8:1C:BA:F3:DF:F2,
+

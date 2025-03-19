@@ -1,0 +1,11 @@
+disable auth in both hosts in /etc/ppp/options
+
+make a new interface for ppp for host1:
+"sudo pppd hostip:host2ip nodetach pty "nc -l 3333"
+
+made new interface for ppp for host2:
+"sudo pppd host2ip:hostip nodetach pty "nc serverip 3333"
+
+
+chage MTU
+sudo if config ppp0 mtu "wanted" up

@@ -1,0 +1,68 @@
+active directory
+
+b - 
+	connect windows server
+	-> add roles and features
+	-> Role-based or feature-based installion
+	-> select a server from the server pool
+	->active directory domain services 
+	->add features
+	-> next 
+	-> promote this server to a domain controller
+	-> add a new forest and choose domain
+	-> next until write domain name
+	->next  until finish
+	-> check windows administrative tools for make sure that  happend
+
+c - go to active directory users and computers 
+	-> select your domain
+	-> got users directory 
+	-> right click
+	-> add user
+	-> enter user and password and remember them
+	
+d - go to active directory users and computers 
+	-> select your domain
+	-> got users directory 
+	-> right click
+	-> add group
+	-> enter group name
+	-> go properties 
+	-> members and add each one to each group
+
+e - in each virtual machine
+	-> go to control panel
+	-> go to Network and Sharing Center
+	-> click Change Adapter Settings
+	-> select your network and add the server as dns
+	
+	after:
+	-> go to settings 
+	-> got to Access work or school
+	-> connect
+	-> enter your domain
+	-> enter your user and password
+
+f - in your windows server Active Directory
+	-> create a shared directory
+	-> open Group Policy Console
+	-> select your domain and right click for create GPO in this domain,and link it
+	-> choose name
+	-> right click to open , got to policies -> administrative templates -> desktop >desktop > desktop wallpaper
+	-> double click -> select enabled and enter path 
+	select fill and apply and ok
+	-> close and go to cmd run gpupdate /force
+	
+g -	
+	->create ping.bat that contain ping "ip address" 	
+	-> open Group Policy Console
+	-> select your domain and right click for create GPO in this domain,and link it
+	-> choose name
+	-> right click to open , go to policies ->
+	-> go to widows settings -> scripts
+	->log on
+	-> browse
+	-> script from shared folder(bat script)
+	
+h -
+	

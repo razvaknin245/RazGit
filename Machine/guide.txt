@@ -1,0 +1,6 @@
+Exercises
+
+* added passsword policy that contain 2capital letters 2normal letters 1digit 1special symbol -
+	sudo nano /etc/pam.d/common-password
+	added : password	requisite pam_pwquality.so dcreadit=-1 difok=4 lcredit=-2 minlen=8 ocredit=-1 reject_username retry=4 ucredit=-2
+* encrypt ubuntu desktop - https://jumpcloud.com/blog/how-to-encrypt-ubuntu-20-04-desktop-post-installation

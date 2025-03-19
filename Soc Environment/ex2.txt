@@ -1,0 +1,14 @@
+install sysmon - windows
+install auditd - linux
+
+install splunk
+
+open port in splunk - settings -> data inputs -> tcp (create new tcp)
+after go to the firewall and add rule for work to the port you selected
+
+in auditd -> go to /etc/audit/audisp-remote.conf -> change ip and port for splunk machine
+restart auditd service.
+
+for include sysmon 
+go splink -> settings -> data inputs -> local event log -> add sysmon operatino service
+

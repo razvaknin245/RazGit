@@ -1,0 +1,22 @@
+1. create two dockers 
+2. docker run -d --name host1 -p port:80 httpd
+   docker run -d -p port:80 --name apache1 ubuntu/apache2
+   
+3. install nginx and config /etc/nginx/sites-available/default
+
+upstream samplehost {
+		server localhost:8090 weight=5;
+		server localhost:8070;
+	}
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+	root /var/www/html;
+	server_name _;
+	location / {
+		# First attempt to serve request as file, then
+		# as directory, then fall back to displaying a 404.
+		try_files $uri $uri =404;
+		}
+	}
+

@@ -1,0 +1,11 @@
+ex2 -
+add registry key with regedit for the place of the exe
+WIN + R -> regedit -> HKEY_LOCAL_MACHINE -> software-> Microsoft -> Current Version-> run -> add new key 
+
+ex3 ->
+using advanced installer 
+- import the files or the current msi
+- import the regedit keys
+- add new value with the exe file
+- build
+- run
